@@ -1,0 +1,44 @@
+# Entorno virtual
+venv/
+.env
+.env.*
+
+# Archivos temporales / logs
+*.log
+*.tmp
+*.bak
+*.swp
+
+# __pycache__ y archivos compilados de Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Archivos de configuración de IDEs/editors
+.vscode/
+.idea/
+*.code-workspace
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de salida
+*.pdf
+
+# Archivos de test coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+.pytest_cache/
+
+# Docker
+*.pid
+*.tar
+*.gz
+*.zip
+*.egg-info/
+dist/
+build/
