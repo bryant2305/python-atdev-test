@@ -2,7 +2,7 @@ import pdfkit
 from jinja2 import Environment, FileSystemLoader
 import os
 
-env = Environment(loader=FileSystemLoader("src/templates"))
+env = Environment(loader=FileSystemLoader("src/assets/templates"))
 
 def generate_pdf(employee, lang="es") -> str:
     template = env.get_template(f"paystub_{lang}.html")
