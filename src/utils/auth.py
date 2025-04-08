@@ -12,6 +12,12 @@ def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
     correct_username = os.getenv("API_USER")
     correct_password = os.getenv("API_PASSWORD")
 
+    if not correct_username or not correct_password:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Las credenciales del servidor no están configuradas correctamente.",
+        )
+
     username_match = secrets.compare_digest(credentials.username, correct_username)
     password_match = secrets.compare_digest(credentials.password, correct_password)
 
@@ -21,5 +27,6 @@ def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
             detail="Credenciales inválidas.",
             headers={"WWW-Authenticate": "Basic"},
         )
-    
+
     return credentials.username
+

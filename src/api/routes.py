@@ -9,14 +9,14 @@ from datetime import datetime
 router = APIRouter()
 
 @router.post("/upload")
-async def upload_csv(file: UploadFile = File(...), username: str = Depends(authenticate)):
+async def upload_csv(file: UploadFile = File(...), country: str = "do", company_name: str = "Empresa", username: str = Depends(authenticate)):
     data = await file.read()
-    employees = parse_csv(data)
+    employees = parse_csv(data, country)  # Pasar `country` al procesar el CSV
     response = []
 
     for emp in employees:
-        pdf_path = generate_pdf(emp, emp.language)
-        i18n = get_translation(emp.language)
+        pdf_path = generate_pdf(emp, country, company_name)  # Usa `country` para decidir idioma
+        i18n = get_translation(country)  # Traducción para el correo
         send_email(emp.email, i18n["subject"], i18n["body"], pdf_path)
         response.append({
             "email": emp.email,
