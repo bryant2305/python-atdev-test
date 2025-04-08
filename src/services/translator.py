@@ -1,13 +1,11 @@
-translations = {
-    "es": {
-        "subject": "Tu recibo de nómina",
-        "body": "Hola, adjunto encontrarás tu recibo de nómina."
-    },
-    "en": {
-        "subject": "Your payslip",
-        "body": "Hi, please find your payslip attached."
-    }
-}
+import json
+from pathlib import Path
 
-def get_translation(lang):
-    return translations.get(lang, translations["es"])
+def get_translation(lang: str) -> dict:
+    try:
+        with open(f"src/assets/translations/{lang}.json", "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        # Fallback a inglés si no existe el idioma
+        with open("src/assets/translations/en.json", "r", encoding="utf-8") as f:
+            return json.load(f)
