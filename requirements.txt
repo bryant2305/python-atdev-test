@@ -3,6 +3,6 @@ uvicorn
 python-dotenv
 pydantic
 jinja2
-pdfkit
 python-multipart
 email-validator
+reportlab
