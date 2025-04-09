@@ -1,7 +1,6 @@
 # Entorno virtual
 venv/
 .env
-.env.*
 
 # Archivos temporales / logs
 *.log
