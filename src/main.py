@@ -1,13 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from src.api.routes import router as api_router # type: ignore
+from src.api.routes.upload_csv import router as api_router
+
 
 load_dotenv()
 
 app = FastAPI(
     title="Paystub Generator API",
-    description="API para procesar nóminas y enviar comprobantes de pago por correo.",
+    description="API for processing payrolls and sending payment vouchers by email.",
     version="1.0.0"
 )
 
