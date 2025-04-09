@@ -8,25 +8,25 @@ from datetime import datetime
 
 router = APIRouter()
 
-@router.post("/upload/{country_code}")
+@router.post("/upload/{country_code}/{company}")
 async def upload_csv(
     file: UploadFile = File(...),
-    country_code: str = Path(..., regex="^(do|en|usa)$"),  #Solo permite "do" o "usa"
-    company_name: str = "Empresa",
-    username: str = Depends(authenticate)
+    country_code: str = Path(..., regex="^(do|en|usa)$"),
+    company: str = Path(...),
+    # username: str = Depends(authenticate)
 ):
     country_config = {
-        "do": {"language": "es", "country_name": "República Dominicana"},
-        "usa": {"language": "en", "country_name": "USA"},
-        "en": {"language": "en", "country_name": "USA"}
+        "do": {"language": "es", "country_name": "República Dominicana", "currency": "RD$"},
+        "usa": {"language": "en", "country_name": "USA", "currency": "$"},
+        "en": {"language": "en", "country_name": "USA", "currency": "$"}
     }
-    
+
     data = await file.read()
     employees = parse_csv(data, country_code)
     
     response = []
     for emp in employees:
-        pdf_path = generate_pdf(emp, country_code, company_name)
+        pdf_path = generate_pdf(emp, country_code, company, country_config[country_code]["currency"])
         i18n = get_translation(country_config[country_code]["language"])
         send_email(emp.email, i18n["subject"], i18n["body"], pdf_path)
         response.append({
