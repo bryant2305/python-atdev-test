@@ -6,13 +6,13 @@ from src.config.settings import settings
 
 def send_email(to_email: str, subject: str, body: str, attachment_path: str) -> None:
     """
-    Envía un correo electrónico con un archivo adjunto.
+   Send an email with an attachment.
     
     Args:
-        to_email (str): Correo del destinatario.
-        subject (str): Asunto del correo.
-        body (str): Cuerpo del correo.
-        attachment_path (str): Ruta del archivo PDF a adjuntar.
+        to_email (str): Recipient's email.
+        subject (str): Subject of the email.
+        body (str): Body of the email.
+        attachment_path (str): Path of the PDF file to attach.
     """
     msg = EmailMessage()
     msg["Subject"] = subject
@@ -34,11 +34,11 @@ def send_email(to_email: str, subject: str, body: str, attachment_path: str) -> 
         with smtplib.SMTP_SSL(settings.SMTP_HOST, settings.SMTP_PORT) as server:
             server.login(settings.SMTP_USER, settings.SMTP_PASSWORD)
             server.send_message(msg)
-            print("Correo enviado exitosamente!")
+            print("Email sent successfully!")
     except Exception as e:
         print(f"Error SMTP: {str(e)}")
         raise HTTPException(
             status_code=500,
-            detail="Error al enviar el correo electrónico. Verifica la configuración del servidor SMTP."
+            detail="Error sending email. Check your SMTP server settings."
         )
     

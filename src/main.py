@@ -1,7 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from api.routes.upload_csv import router as api_router # type: ignore
+from src.api.routes.upload_csv import router as api_router
+
 
 load_dotenv()
 

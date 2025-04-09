@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File, Depends, Path
-from src.utils.auth import authenticate
+from src.auth.auth import authenticate
 from src.services.csv_processor import parse_csv
 from src.services.pdf_generator import generate_pdf
 from src.services.email_sender import send_email
@@ -13,7 +13,7 @@ async def upload_csv(
     file: UploadFile = File(...),
     country_code: str = Path(..., regex="^(do|en|usa)$"),
     company: str = Path(...),
-    # username: str = Depends(authenticate)
+    username: str = Depends(authenticate)
 ):
     country_config = {
         "do": {"language": "es", "country_name": "República Dominicana", "currency": "RD$"},

@@ -15,7 +15,7 @@ def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
     if not correct_username or not correct_password:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Las credenciales del servidor no están configuradas correctamente.",
+            detail="The server credentials are not configured correctly.",
         )
 
     username_match = secrets.compare_digest(credentials.username, correct_username)
@@ -24,7 +24,7 @@ def authenticate(credentials: HTTPBasicCredentials = Depends(security)):
     if not (username_match and password_match):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Credenciales inválidas.",
+            detail="Invalid credentials.",
             headers={"WWW-Authenticate": "Basic"},
         )
 

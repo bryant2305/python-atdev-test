@@ -1,0 +1,17 @@
+{
+  "title": "Comprobante de Nómina",
+  "employee_info": "Información del Empleado",
+  "name": "Nombre:",
+  "position": "Posición:",
+  "period": "Período:",
+  "payment_details": "Detalles de Pago",
+  "gross_salary": "Salario Bruto",
+  "gross_payment": "Pago Bruto",
+  "net_payment": "Pago Neto",
+  "deductions": "Descuentos",
+  "health": "SFS",
+  "social": "AFP",
+  "taxes": "ISR",
+  "others": "Otros Descuentos",
+  "footer": "Documento generado automáticamente - Todos los derechos reservados"
+}
