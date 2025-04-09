@@ -7,7 +7,6 @@ from src.services.translator import get_translation
 from datetime import datetime
 
 router = APIRouter()
-
 @router.post("/upload/{country_code}/{company}")
 async def upload_csv(
     file: UploadFile = File(...),
@@ -24,11 +23,18 @@ async def upload_csv(
     data = await file.read()
     employees = parse_csv(data, country_code)
     
+    i18n = get_translation(country_config[country_code]["language"])
+
     response = []
     for emp in employees:
-        pdf_path = generate_pdf(emp, country_code, company, country_config[country_code]["currency"])
-        i18n = get_translation(country_config[country_code]["language"])
-        send_email(emp.email, i18n["subject"], i18n["body"], pdf_path)
+        pdf_path = generate_pdf(
+            emp,
+            country=country_code,
+            company=company,
+            currency=country_config[country_code]["currency"],
+            labels=i18n["pdf"]
+        )
+        send_email(emp.email, i18n["email"]["subject"], i18n["email"]["body"], pdf_path)
         response.append({
             "email": emp.email,
             "timestamp": datetime.utcnow().isoformat()

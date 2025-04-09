@@ -8,7 +8,7 @@ load_dotenv()
 
 app = FastAPI(
     title="Paystub Generator API",
-    description="API para procesar nóminas y enviar comprobantes de pago por correo.",
+    description="API for processing payrolls and sending payment vouchers by email.",
     version="1.0.0"
 )
 

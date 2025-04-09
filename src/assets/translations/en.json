@@ -1,4 +1,24 @@
 {
-    "subject": "Your Salary Receipt",
-    "body": "Hi, please find your payslip attached."
+  "email": {
+    "subject": "Your Payroll Statement",
+    "body": "Dear employee,\n\nAttached you will find your payroll statement. Please review the information and contact us if you have any questions.\n\nBest regards,\nThe HR Team"
+  },
+  "pdf": {
+    "title": "Payroll Statement",
+    "employee_info": "Employee Information",
+    "name": "Name:",
+    "position": "Position:",
+    "email": "Email:",
+    "period": "Period:",
+    "payment_details": "Payment Details",
+    "gross_salary": "Gross Salary",
+    "gross_payment": "Gross Payment",
+    "net_payment": "Net Payment",
+    "deductions": "Deductions",
+    "health": "Health Insurance",
+    "social": "Social Security",
+    "taxes": "Taxes",
+    "others": "Other Deductions",
+    "footer": "Automatically generated document - All rights reserved"
   }
+}
