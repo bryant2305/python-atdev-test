@@ -31,6 +31,8 @@ API para generación y envío de recibos de nómina automatizados con soporte mu
 git clone https://github.com/bryant2305/python-atdev-test.git
 cd python-atdev-test
 ```
+### Renombrar el archivo .env.exameple a .env
+
 ### Construir la imagen:
 
 docker build --no-cache -t python-paystubs .
@@ -39,13 +41,6 @@ docker build --no-cache -t python-paystubs .
 
 docker run -d -p 8000:8000 --env-file .env python-paystubs
 
-### Crear archivo .env:
-
-SMTP_SERVER=smtp.example.com
-SMTP_PORT=587
-SMTP_USER=user@example.com
-SMTP_PASSWORD=your_password
-DEBUG=false
 
 ### 🧪 Ejecución de Tests
 
