@@ -53,5 +53,5 @@ pytest tests/ -v
 ### Ejemplo con curl:
 
 curl --location 'http://localhost:8000/api/upload/usa/atdev' \
---header 'Authorization: Basic YWRtaW46c3VwZXJzZWN1cmU=' \
+--header 'Authorization: Basic YWRtaW5AZ21haWwuY29tOnN1cGVyc2VjdXJl' \
 --form 'file=@"/Users/bryantperez/Downloads/Copy of encoded-nomina.csv"'
