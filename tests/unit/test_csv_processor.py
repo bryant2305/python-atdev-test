@@ -13,7 +13,7 @@ def test_parse_csv_invalid_data():
     invalid_data = b"invalid_header1,invalid_header2\nvalue1,value2"
     with pytest.raises(ValueError) as exc_info:
         parse_csv(invalid_data, "usa")
-    assert "Invalid CSV headers" in str(exc_info.value)
+    assert "Faltan columnas requeridas" in str(exc_info.value)
     
 def test_country_specific_parsing():
     data = b"""full_name,email,position,health_discount_amount,social_discount_amount,taxes_discount_amount,other_discount_amount,gross_salary,gross_payment,net_payment,period
